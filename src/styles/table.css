@@ -1,0 +1,31 @@
+.classColumn{
+    width: 10vw;
+    height: 5vh;
+    border: double;
+    border-color: black;
+    text-align: center;
+}
+
+.classHint{
+    width: 10vw;
+    height: 5vh;
+    border: inset;
+    border-color: black;
+    text-align: center;
+}
+
+.classRow{
+    border: double;
+    border-color: black;
+    height: 8vh;
+    text-align: center;
+}
+
+table{
+    margin-top: 20vh;
+    margin-left: 40vh;
+}
+
+.cap{
+    text-align: center;
+}
