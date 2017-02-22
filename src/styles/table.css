@@ -1,5 +1,5 @@
 .classColumn{
-    width: 10vw;
+width: 10vw;
     height: 5vh;
     border: double;
     border-color: black;
@@ -15,7 +15,7 @@
 }
 
 .classRow{
-    border: double;
+    border: solid;
     border-color: black;
     height: 8vh;
     text-align: center;
@@ -28,4 +28,13 @@ table{
 
 .cap{
     text-align: center;
+}
+
+.empty{
+    width: 400vw;
+    height: 20vh;
+    text-decoration-style: solid;
+    text-align: center;
+    margin-top: 20vh;
+    margin-left: 40vh;
 }

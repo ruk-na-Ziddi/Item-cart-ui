@@ -44,7 +44,6 @@ class DashBoard extends React.Component {
                         {
                             this.state.items.map((item, index) => {
                                 var detail = JSON.parse(item);
-                                console.log(detail);
                                 return (
                                     <tr key={index}>
                                         <td className="classColumn">{detail.name}</td>
@@ -62,7 +61,7 @@ class DashBoard extends React.Component {
                                Saved <b>{this.state.cart.total - this.state.cart.discountedTotal} &#8377;</b></td>
                       </tr>
                   </tbody>
-                </table> 
+                </table>
             </div>
         )
     }
