@@ -22,8 +22,8 @@ width: 10vw;
 }
 
 table{
-    margin-top: 20vh;
-    margin-left: 40vh;
+    margin-top: 5vh;
+    margin-left: 25vw;
 }
 
 .cap{
@@ -37,4 +37,24 @@ table{
     text-align: center;
     margin-top: 20vh;
     margin-left: 40vh;
+}
+
+.buttonC{
+    text-align: center;
+    margin-top: 10vh;
+}
+
+.classChoice{
+    text-align: center;
+    margin-top: 10vh;
+    margin-right: 5vw;
+}
+
+.classSelect{
+    display: inline;
+}
+
+.buttonA{
+    display: inline-block;
+    margin-left: 1vw;
 }

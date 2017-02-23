@@ -1,6 +1,6 @@
 import React from "react";
 import request from "superagent";
-import "../../styles/table.css"
+import "../../styles/table.css";
 
 class DashBoard extends React.Component {
 
@@ -11,11 +11,31 @@ class DashBoard extends React.Component {
             "itemsWithCount": {},
             "items": [],
             "discountedTotal": 0,
-            "total": 0
-        }
+            "total": 0,
+            "options": [
+                "laptop", "smart-phone","fitness-band","smart-watch"
+            ],
+            "values": {
+                "laptop": {"name": "laptop", "price": 65000,"endDate": "15:08:2017","discount": 5},
+                "smart-phone": {"name": "smart-phone", "price": 20000,"endDate": "15:08:2017","discount": 10},
+                "fitness-band": {"name": "fitness-band", "price": 5000,"endDate": "15:08:2017","discount": 10},
+                "smart-watch": {"name": "smart-watch", "price": 5000,"endDate": "15:08:2017","discount": 5}
+            },
+            "selectedItem" : ""
+        };
+
+        this.createCart = this.createCart.bind(this);
+        this.refresh = this.refresh.bind(this);
+        this.setChoice = this.setChoice.bind(this);
+        this.addItem = this.addItem.bind(this);
     }
 
     componentDidMount() {
+        this.createCart();
+        this.refresh();
+    }
+
+    refresh(){
         request.get('/api/carts/12345').end((err, response)=> {
             if(!err){
                 var cart = response.body;
@@ -28,9 +48,43 @@ class DashBoard extends React.Component {
         });
     }
 
+    createCart(){
+        var user = {"id": 12345};
+        request.post('/api/carts').send(user).end((err, res) => {
+            if(!err){
+                console.log("Cart created");
+                this.refresh();
+            }
+        });
+    }
+
+    setChoice(e){
+        this.setState({selectedItem: e.target.value});
+    }
+
+    addItem(){
+        var itemToAdd = this.state.values[this.state.selectedItem];
+        request.post('/api/carts/12345').send(itemToAdd).end((err, res) => {
+            if(!err){
+                this.refresh();
+            }
+        });
+    }
+
     render() {
         return (
             <div>
+                <div className="classChoice">
+                    <select onChange={this.setChoice} className="classSelect">
+                        <option value="select-item">select</option>
+                        {
+                            this.state.options.map((option, i) => {
+                                return <option key={i} value={option}>{option}</option>
+                            })
+                        }
+                    </select>
+                <div className="buttonA"><button onClick={this.addItem}>Add Item</button></div>
+                </div>
                 <table>
                     <caption className="cap"><b>Cart Details</b></caption>
                   <tbody>
